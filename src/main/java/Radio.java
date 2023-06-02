@@ -1,6 +1,6 @@
 public class Radio {
-    public int radioStation;
-    public int radioVolume;
+    private int radioStation;
+    private int radioVolume;
 
     public void next() {
         if (radioStation != 9) {
@@ -45,7 +45,6 @@ public class Radio {
         if (radioStation > 9) {
             return;
         }
-
         this.radioStation = radioStation;
     }
 
