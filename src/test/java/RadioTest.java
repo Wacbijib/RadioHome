@@ -5,11 +5,11 @@ public class RadioTest {
 
     @Test
     public void shouldSetStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
-        radio.setRadioStation(8);
+        radio.setRadioStation(3);
 
-        int expected = 8;
+        int expected = 3;
         int actual = radio.getRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -17,9 +17,20 @@ public class RadioTest {
 
     @Test
     public void shouldSetNegativeStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
-        radio.setRadioStation(-77);
+        radio.setRadioStation(-2);
+        int expected = 0;
+        int actual = radio.getRadioStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetStationMoreThanMax() {
+        Radio radio = new Radio(10);
+
+        radio.setRadioStation(10);
         int expected = 0;
         int actual = radio.getRadioStation();
 
@@ -28,10 +39,10 @@ public class RadioTest {
 
     @Test
     public void shouldSetBoarderStationMax() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
 
-        radio.setRadioStation(10);
-        int expected = 0;
+        radio.setRadioStation(9);
+        int expected = 9;
         int actual = radio.getRadioStation();
 
         Assertions.assertEquals(expected, actual);
@@ -97,7 +108,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setRadioStation(3);
 
         radio.next();
@@ -109,7 +120,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetNextIfStationMax() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setRadioStation(9);
 
         radio.next();
@@ -121,7 +132,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetPrevStation() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setRadioStation(9);
 
         radio.prev();
@@ -133,7 +144,7 @@ public class RadioTest {
 
     @Test
     public void shouldSetPrevIfStationMin() {
-        Radio radio = new Radio();
+        Radio radio = new Radio(10);
         radio.setRadioStation(0);
 
         radio.prev();
